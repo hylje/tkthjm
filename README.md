@@ -1,8 +1,8 @@
 ABOUT
 ====
 
-A Helsinki University C programming course project, fall 2011
-URL: http://www.cs.helsinki.fi/node/62063
+A Helsinki University C programming course project, fall 2011 
+URL: http://www.cs.helsinki.fi/node/62063 
 
 Our topic:
 ----------
@@ -25,7 +25,7 @@ Use balanced binary trees as your data structure.
 PARTICIPANTS
 ============
 
-Juuso Hyvönen
-Leo Honkanen
-Miika Sirén
+* Juuso Hyvönen 
+* Leo Honkanen 
+* Miika Sirén 
 
