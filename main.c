@@ -3,6 +3,7 @@
 #include <string.h>
 #include "functions.h"
 
+
 int main(int argc, char** argv) {
     char filename[50];
     FILE* file = 0;

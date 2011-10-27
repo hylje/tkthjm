@@ -8,6 +8,9 @@ void mainloop(FILE* file) {
     //   print();
 }
 
+/*
+ Juuso Hyvönen
+ */
 void printHelp() {
     printf("Program prints the number of sentences and the distribution "
             "how many words the sentences contain. The name of the output "
