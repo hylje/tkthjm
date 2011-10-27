@@ -1,20 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "functions.h"
-
-void readFileName(char* filename) {
-    printf("Please enter filename: ");
-    scanf("%s", filename);
-}
-
-void mainloop(FILE* file) {
-    //DO SOMETHING
-}
 
 int main(int argc, char** argv) {
     char filename[50];
     FILE* file = 0;
-    if (argc < 2) {
+    if (argc > 1 && strcmp(argv[1], "-h") == 0) {
+        printHelp();
+        return (EXIT_SUCCESS);
+    }
+
+    if (argc == 1) {
+        puts("1");
         readFileName(filename);
         file = fopen(filename, "r");
     } else {
@@ -22,8 +20,9 @@ int main(int argc, char** argv) {
     }
     if (file == NULL) {
         puts("File could not be read");
-        exit(EXIT_FAILURE);
+        return (EXIT_FAILURE);
     }
+
     mainloop(file);
     return (EXIT_SUCCESS);
 }
