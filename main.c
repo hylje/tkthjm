@@ -3,6 +3,7 @@
 #include <string.h>
 #include "functions.h"
 
+
 int main(int argc, char** argv) {
     char filename[50];
     FILE* file = 0;
@@ -12,9 +13,7 @@ int main(int argc, char** argv) {
     }
 
     if (argc == 1) {
-        puts("1");
-        readFileName(filename);
-        file = fopen(filename, "r");
+        file = stdin;
     } else {
         file = fopen(argv[1], "r");
     }

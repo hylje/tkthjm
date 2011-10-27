@@ -25,6 +25,7 @@ int height(node * nod) {
 }
 
 //TODO: fix this
+
 void delete_tree(node * nod) {
     if (nod != NULL) {
         delete_tree(nod->left);
@@ -37,14 +38,14 @@ void delete_tree(node * nod) {
 }
 
 node * create_node(node * parent, char * data) {
-    node * new = malloc(sizeof(node));
-    
+    node * new = malloc(sizeof (node));
+
     if (new == NULL) {
         printf("Virhe tilan varaamisessa");
         return NULL;
     }
 
-    new->data = malloc(sizeof(char) * (strlen(data) + 1));
+    new->data = malloc(sizeof (char) * (strlen(data) + 1));
 
     if (new->data == NULL) {
         printf("Virhe tilan varaamisessa");
@@ -61,37 +62,35 @@ node * create_node(node * parent, char * data) {
     return new;
 }
 
-void insert(node * nod, char * data) {  
+void insert(node * nod, char * data) {
     node * current = nod;
-    
+
     if (nod == NULL && nod == root) {
         root = create_node(NULL, data);
         return;
     }
-    
+
     while (strcmp(current->data, data) != 0) {
         if (strcmp(data, current->data) < 0) {
             if (current->left != NULL) {
                 current = current->left;
-            }    
-            else {
+            } else {
                 current->left = create_node(current, data);
                 current = current->left;
             }
         } else if (strcmp(data, current->data) > 0) {
             if (current->right != NULL) {
                 current = current->right;
-            }    
-            else {
+            } else {
                 current->right = create_node(current, data);
                 current = current->right;
             }
         } else { //arvo on jo puussa
             current->count++;
             return;
-        }    
+        }
     }
-    
+
     do {
         current = current->parent;
         current->height = max(height(current->left), height(current->right)) + 1;
@@ -102,16 +101,14 @@ void insert(node * nod, char * data) {
 node * balance_tree(node * nod) {
     if (abs(height(nod->left) - height(nod->right)) < 2) {
         return nod;
-    }
-    
-    else if (height(nod->left) == (height(nod->right) + 2)) {
+    } else if (height(nod->left) == (height(nod->right) + 2)) {
         if (height(nod->left->left) > height(nod->left->right)) {
             nod = rotate_right(nod);
         } else {
             rotate_left(nod->left);
             nod = rotate_right(nod);
         }
-    //} else if (height(nod->right) == (height(nod->left) + 2)) {
+        //} else if (height(nod->right) == (height(nod->left) + 2)) {
     } else {
         if (height(nod->right->right) > height(nod->right->left)) {
             nod = rotate_left(nod);
@@ -125,65 +122,62 @@ node * balance_tree(node * nod) {
 
 node * rotate_right(node * k1) {
     node * k2 = k1->left;
-    
+
     k2->parent = k1->parent;
-    
+
     if (k1->parent != NULL) {
         if (k1 == k1->parent->left) {
             k1->parent->left = k2;
-        }
-        else {
+        } else {
             k1->parent->right = k2;
         }
-    }
-    else {
+    } else {
         root = k2;
     }
-    
+
     k1->parent = k2;
     k1->left = k2->right;
-    
+
     if (k1->left != NULL) {
         k1->left->parent = k1;
     }
-    
+
     k2->right = k1;
-    
+
     k1->height = max(height(k1->left), height(k1->right)) + 1;
     k2->height = max(height(k2->left), height(k2->right)) + 1;
-    
+
     return k2;
-    
+
 }
 
 node * rotate_left(node * k1) {
     node * k2 = k1->right;
-    
+
     k2->parent = k1->parent;
-    
+
     if (k1->parent != NULL) {
         if (k1 == k1->parent->right) {
             k1->parent->right = k2;
-        }
-        else {
+        } else {
             k1->parent->left = k2;
-        }    
+        }
     } else {
         root = k2;
     }
-    
+
     k1->parent = k2;
     k1->right = k2->left;
-    
+
     if (k1->right != NULL) {
         k1->right->parent = k1;
     }
-    
+
     k2->left = k1;
-    
+
     k1->height = max(height(k1->left), height(k1->right)) + 1;
     k2->height = max(height(k2->left), height(k2->right)) + 1;
-    
+
     return k2;
 }
 
@@ -193,4 +187,20 @@ void print_inorder(node * nod) {
         printf("data: %s, height: %d\n", nod->data, nod->height);
         print_inorder(nod->right);
     }
+}
+
+node* findNode(node* nod, char* word) {
+    node* left;
+    if (nod != 0) {
+        if (strcmp(nod->data, word)) {
+            return nod;
+        }
+        left = findNode(nod->left);
+        if (left != NULL) {
+            return left;
+        }
+        return findNode(nod->right);
+
+    }
+    return nod;
 }

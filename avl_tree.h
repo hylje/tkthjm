@@ -40,10 +40,10 @@ int max(int a, int b);
 int height(node * nod);
 
 /**
- * Tarkoitus: Vapauttaa puun alkoille varatun tilan.
+ * Tarkoitus: Vapauttaa puun alkioille varatun tilan.
  * Parametrit: Viite solmuun.
  * Palauttaa: Ei mitään
- * Muuttaa: Vapauttaa puun alkoille varatun tilan.
+ * Muuttaa: Vapauttaa puun alkioille varatun tilan.
  */
 void delete_tree(node * nod);
 
@@ -98,6 +98,8 @@ node * rotate_right(node * k1);
  * Muuttaa: Ei mitään-
  */
 void print_inorder(node * nod);
+
+node* findNode(node*, char*)
 
 #endif
 
