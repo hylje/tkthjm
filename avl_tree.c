@@ -52,8 +52,8 @@ node * create_node(node * parent, char * data) {
         free(new);
         return NULL;
     }
-
-    new->data = data;
+    
+    memcpy(new->data, data);
     new->height = 0;
     new->left = NULL;
     new->right = NULL;
@@ -189,6 +189,7 @@ void print_inorder(node * nod) {
     }
 }
 
+<<<<<<< HEAD
 void print_counts(node * nod) {
     if (nod != 0) {
         print_inorder(nod->left);
@@ -196,6 +197,8 @@ void print_counts(node * nod) {
         print_inorder(nod->right);
     }
 }
+=======
+>>>>>>> 881063cea18f7639b3669dde78ff35ebb396a610
 
 node* findNode(node* nod, char* word) {
     node* left;

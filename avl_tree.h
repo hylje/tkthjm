@@ -63,7 +63,8 @@ node * create_node(node * parent, char * data);
 /**
  * Tekijä Miika Sirén
  * Tarkoitus: Lisää puuhun uuden alkion.
- * Parametrit: Viite lisättävään solmuun ja solmuun talletettavaan dataan.
+ * Parametrit: Viite lisättävään solmuun ja solmuun talletettavaan dataan. 
+               Tekee kopion solmuun talletettavasta datasta.
  * Palauttaa: Ei mitään.
  * Muuttaa: Lisää uuden alkion puuhun, muuttaa tarvittaessa uuden alkion ja 
  * puun juuren välisten solmujen korkeutta.
@@ -108,6 +109,7 @@ node * rotate_right(node * k1);
  */
 void print_inorder(node * nod);
 
+<<<<<<< HEAD
 /**
  * Tekijä: Juuso Hyvönen
  * Tarkoitus: Tulostaa puun sanat ja sanojen lukumäärät
@@ -125,6 +127,9 @@ void print_counts(node * nod);
  * Muuttaa: Ei mitään-
  */
 node* findNode(node*, char*)
+=======
+node* findNode(node*, char*);
+>>>>>>> 881063cea18f7639b3669dde78ff35ebb396a610
 
 #endif
 
