@@ -10,55 +10,79 @@ bool is_meaningful(char* word) {
   return strlen(word) > 1;
 }
 
+bool is_sentence_boundary(char ch) {
+  return (ch == '.' || ch == '!' || ch == '?');
+}
+
+bool is_word_boundary(char ch) {
+  return (ch == ' ' || ch == '\n' || ch == '\t' ||
+	  ch == ',' || is_sentence_boundary(ch));
+}
+
+
 /* Leo Honkanen */
 void mainloop(FILE* file) {
   int ch;
   char* word;
-  char* node_word;
-  int word_alloc = 50;
+  unsigned int word_alloc = 50;
   int sentences = 0;
-  int words = 0;
-  node* root;
+  int cur_words = 0;
+  node* words_root;
 
-  data = malloc(sizeof(char) * data_alloc);
+  int category_1_3 = 0;
+  int category_4_6 = 0;
+  int category_7_10 = 0;
+  int category_over_10 = 0;
+
+  root = create_node(NULL, NULL);
+  word = malloc(sizeof(char) * word_alloc);
 
   while ((ch = fgetc(file)) != EOF) {
-    if (ch == ' ' || ch == '\n' || ch == '\t' ||
-	ch == ',' || ch == '.' || ch == '!' || ch == '?') {
-      /* word boundary */
+    if (is_word_boundary(ch)) {
       if (is_meaningful(word)) {
-	node_word = malloc(sizeof(char) * strlen(word) + 1);
-	strcpy(node_word, word);
-	insert(root, node_word);
-      }
-      word = '';
-      words++;
-    }
+	cur_words++;
+	insert(words_root, word);
 
-    if (ch == '.' || ch == '!' || ch == '?') {
-      /* also a sentence boundary */
-      if(strlen(word) > 1) {
-	sentences++;
+	if (is_sentence_boundary(ch)) {
+	  if (cur_words <= 3) {
+	    category_1_3++;
+	  }
+	  else if (cur_words <= 6) {
+	    category_4_6++;
+	  }
+	  else if (cur_words <= 10) {
+	    category_7_10++;
+	  }
+	  else {
+	    category_over_10++;
+	  }
+
+	  sentences++;
+	  cur_words = 0;
+	}
       }
-      word = '';
+
+      word = "";
+      cur_words++;
     }
 
     if (strlen(word)+2 > word_alloc) {
       /* the current word may be very long, make sure we can memorize it */
       word_alloc *= 2;
-      word = remalloc(word, word_alloc);
+      word = realloc(word, word_alloc);
     }
 
     word += ch;    
   }
 
-  print_ordered(root);
+  printResults(root, sentences, category_1_3, category_4_6, category_7_10, category_over_10);
   printf("\n");
   printf("\n");
-  printf("%d sentences with an average of %f words each", 
-	 sentences, 
-	 (float)words/(float)sentences);
-  /* TODO print data */
+  printf("1-3 word sentences: %d\n", category_1_3);
+  printf("4-6 word sentences: %d\n", category_4_6);
+  printf("7-10 word sentences: %d\n", category_7_10);
+  printf("over 10 word sentences: %d\n", category_over_10);
+  printf("%d sentences total.\n", sentences);
 }
 
 /*

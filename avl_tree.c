@@ -52,8 +52,8 @@ node * create_node(node * parent, char * data) {
         free(new);
         return NULL;
     }
-
-    new->data = data;
+    
+    memcpy(new->data, data);
     new->height = 0;
     new->left = NULL;
     new->right = NULL;
@@ -188,6 +188,7 @@ void print_inorder(node * nod) {
         print_inorder(nod->right);
     }
 }
+
 
 node* findNode(node* nod, char* word) {
     node* left;

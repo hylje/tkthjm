@@ -58,7 +58,8 @@ node * create_node(node * parent, char * data);
 
 /**
  * Tarkoitus: Lisää puuhun uuden alkion.
- * Parametrit: Viite lisättävään solmuun ja solmuun talletettavaan dataan.
+ * Parametrit: Viite lisättävään solmuun ja solmuun talletettavaan dataan. 
+               Tekee kopion solmuun talletettavasta datasta.
  * Palauttaa: Ei mitään.
  * Muuttaa: Lisää uuden alkion puuhun, muuttaa tarvittaessa uuden alkion ja 
  * puun juuren välisten solmujen korkeutta.
@@ -99,7 +100,7 @@ node * rotate_right(node * k1);
  */
 void print_inorder(node * nod);
 
-node* findNode(node*, char*)
+node* findNode(node*, char*);
 
 #endif
 
