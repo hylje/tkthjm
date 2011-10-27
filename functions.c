@@ -7,8 +7,8 @@
 
 void printResults(node* tree, int total, int a, int b, int c, int d) {
     printf("WORD\t\tCOUNT\n");
-    print_counts(node* tree);
-    printf("Number of sentences: %d\n, Lenght distribution:"
+    print_counts(tree);
+    printf("Number of sentences: %d\nLength distribution:"
             "1-3: %d  4-6: %d, 7-10: %d,  10+: %d", total, a, b, c, d);
 }
 
@@ -41,7 +41,7 @@ void mainloop(FILE* file) {
   int category_7_10 = 0;
   int category_over_10 = 0;
 
-  root = create_node(NULL, NULL);
+  words_root = create_node(NULL, NULL);
   word = malloc(sizeof(char) * word_alloc);
 
   while ((ch = fgetc(file)) != EOF) {

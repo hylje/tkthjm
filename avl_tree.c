@@ -53,7 +53,7 @@ node * create_node(node * parent, char * data) {
         return NULL;
     }
     
-    memcpy(new->data, data);
+    strcpy(new->data, data);
     new->height = 0;
     new->left = NULL;
     new->right = NULL;
@@ -203,11 +203,11 @@ node* findNode(node* nod, char* word) {
         if (strcmp(nod->data, word)) {
             return nod;
         }
-        left = findNode(nod->left);
+        left = findNode(nod->left, word);
         if (left != NULL) {
             return left;
         }
-        return findNode(nod->right);
+        return findNode(nod->right, word);
 
     }
     return nod;
