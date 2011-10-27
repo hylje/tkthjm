@@ -109,7 +109,7 @@ node * rotate_right(node * k1);
  */
 void print_inorder(node * nod);
 
-<<<<<<< HEAD
+
 /**
  * Tekijä: Juuso Hyvönen
  * Tarkoitus: Tulostaa puun sanat ja sanojen lukumäärät
@@ -126,10 +126,7 @@ void print_counts(node * nod);
  * Palauttaa: Viitteen etsittyyn solmuun.
  * Muuttaa: Ei mitään-
  */
-node* findNode(node*, char*)
-=======
 node* findNode(node*, char*);
->>>>>>> 881063cea18f7639b3669dde78ff35ebb396a610
 
 #endif
 

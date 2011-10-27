@@ -4,8 +4,6 @@
 #include <stdbool.h>
 #include "functions.h"
 #include "avl_tree.h"
-<<<<<<< HEAD
-
 
 void printResults(node* tree, int total, int a, int b, int c, int d) {
     printf("WORD\t\tCOUNT\n");
@@ -13,8 +11,6 @@ void printResults(node* tree, int total, int a, int b, int c, int d) {
     printf("Number of sentences: %d\n, Lenght distribution:"
             "1-3: %d  4-6: %d, 7-10: %d,  10+: %d", total, a, b, c, d);
 }
-=======
->>>>>>> 881063cea18f7639b3669dde78ff35ebb396a610
 
 /* Leo Honkanen */
 bool is_meaningful(char* word) {
@@ -87,13 +83,6 @@ void mainloop(FILE* file) {
   }
 
   printResults(root, sentences, category_1_3, category_4_6, category_7_10, category_over_10);
-  printf("\n");
-  printf("\n");
-  printf("1-3 word sentences: %d\n", category_1_3);
-  printf("4-6 word sentences: %d\n", category_4_6);
-  printf("7-10 word sentences: %d\n", category_7_10);
-  printf("over 10 word sentences: %d\n", category_over_10);
-  printf("%d sentences total.\n", sentences);
 }
 
 void printHelp() {
