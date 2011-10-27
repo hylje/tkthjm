@@ -22,6 +22,7 @@ typedef struct node {
 struct node * root;
 
 /**
+ * Tekijä Miika Sirén
  * Tarkoitus: Palauttaa kahdesta arvosta suuremman.
  * Parametrit: Kokonaisluku a ja kokonaisluku b.
  * Palauttaa: Palauttaa arvon a, jos a on suurempi kuin b. Muutoin palauttaa 
@@ -31,6 +32,7 @@ struct node * root;
 int max(int a, int b);
 
 /**
+ * Tekijä Miika Sirén
  * Tarkoitus: Palauttaa solmun korkeuden.
  * Parametrit: Viite solmuun.
  * Palauttaa: Jos solmu on olemassa, palautetaan solmun korkeus. Muutoin
@@ -40,6 +42,7 @@ int max(int a, int b);
 int height(node * nod);
 
 /**
+ * Tekijä Miika Sirén
  * Tarkoitus: Vapauttaa puun alkioille varatun tilan.
  * Parametrit: Viite solmuun.
  * Palauttaa: Ei mitään
@@ -48,6 +51,7 @@ int height(node * nod);
 void delete_tree(node * nod);
 
 /**
+ * Tekijä Miika Sirén
  * Tarkoitus: Luo uuden solmun, varaa solmulle ja sen datalle tilan ja asettaa 
  * kentille alkuarvot.
  * Parametrit: Viiten solmun vanhempaan ja solmuun talletettavaan dataan.
@@ -57,6 +61,7 @@ void delete_tree(node * nod);
 node * create_node(node * parent, char * data);
 
 /**
+ * Tekijä Miika Sirén
  * Tarkoitus: Lisää puuhun uuden alkion.
  * Parametrit: Viite lisättävään solmuun ja solmuun talletettavaan dataan.
  * Palauttaa: Ei mitään.
@@ -66,6 +71,7 @@ node * create_node(node * parent, char * data);
 void insert(node * nod, char * data);
 
 /**
+ * Tekijä Miika Sirén
  * Tarkoitus: Tekee tarvittavat kierto-operaatiot puun saattamiseksi tasapainoon.
  * Parametrit: Viite tasapainotettavaan solmuun.
  * Palauttaa: Tasapainotetun solmun.
@@ -74,6 +80,7 @@ void insert(node * nod, char * data);
 node * balance_tree(node * nod);
 
 /**
+ * Tekijä Miika Sirén
  * Tarkoitus: Suorittaa avl-puun kierto-operaation vasemmalle.
  * Parametrit: Viite epätasapainossa olevaan solmuun
  * Palauttaa: Kierretyn alipuun uuden juuren.
@@ -83,6 +90,7 @@ node * balance_tree(node * nod);
 node * rotate_left(node * k1);
 
 /**
+ * Tekijä Miika Sirén
  * Tarkoitus: Suorittaa avl-puun kierto-operaation oikealle.
  * Parametrit: Viite epätasapainossa olevaan solmuun
  * Palauttaa: Kierretyn alipuun uuden juuren.
@@ -92,6 +100,7 @@ node * rotate_left(node * k1);
 node * rotate_right(node * k1);
 
 /**
+ * Tekijä Miika Sirén
  * Tarkoitus: Tulostaa puun solmujen datan ja näiden korkeuden.
  * Parametrit: Viite solmuun.
  * Palauttaa: Ei mitään.
@@ -99,6 +108,22 @@ node * rotate_right(node * k1);
  */
 void print_inorder(node * nod);
 
+/**
+ * Tekijä: Juuso Hyvönen
+ * Tarkoitus: Tulostaa puun sanat ja sanojen lukumäärät
+ * Parametrit: Viite solmuun.
+ * Palauttaa: Ei mitään.
+ * Muuttaa: Ei mitään-
+ */
+void print_counts(node * nod);
+
+/**
+ * Tekijä: Juuso Hyvönen
+ * Tarkoitus: Etsii solmun, joka kuvaa etsittyä sanaa
+ * Parametrit: Viite solmuun, viite etsittävään sanaan.
+ * Palauttaa: Viitteen etsittyyn solmuun.
+ * Muuttaa: Ei mitään-
+ */
 node* findNode(node*, char*)
 
 #endif

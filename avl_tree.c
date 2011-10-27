@@ -189,6 +189,14 @@ void print_inorder(node * nod) {
     }
 }
 
+void print_counts(node * nod) {
+    if (nod != 0) {
+        print_inorder(nod->left);
+        printf("%s:\t\t%d\n", nod->data, nod->count);
+        print_inorder(nod->right);
+    }
+}
+
 node* findNode(node* nod, char* word) {
     node* left;
     if (nod != 0) {

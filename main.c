@@ -3,7 +3,15 @@
 #include <string.h>
 #include "functions.h"
 
-
+/**
+ * Tekijä: Juuso Hyvönen
+ * Tarkoitus: Parsii komentoriviparametrit sekä kutsuu pääohjelmaa
+ * Parametrit: Parametrien lukumäärä, parametritaulukko.
+ * -h tulostaa käyttöohjeet. Muussa tapauksessa parametrin
+ * oletetaan olevan tiedostonimi
+ * Palauttaa: exit-koodin
+ * Muuttaa: Ei mitään-
+ */
 int main(int argc, char** argv) {
     char filename[50];
     FILE* file = 0;
