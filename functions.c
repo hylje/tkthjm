@@ -8,8 +8,9 @@
 void printResults(node* tree, int total, int a, int b, int c, int d) {
     printf("WORD\t\tCOUNT\n");
     print_counts(tree);
-    printf("Number of sentences: %d\nLength distribution:"
-            "1-3: %d  4-6: %d, 7-10: %d,  10+: %d", total, a, b, c, d);
+    printf("Number of sentences: %d\n", total);
+    printf("Length distribution:"
+            "1-3: %d  4-6: %d, 7-10: %d,  10+: %d\n", a, b, c, d);
 }
 
 /* Leo Honkanen */
@@ -31,24 +32,23 @@ bool is_word_boundary(char ch) {
 void mainloop(FILE* file) {
   int ch;
   char* word;
+  unsigned int word_pos = 0;
   unsigned int word_alloc = 50;
   int sentences = 0;
   int cur_words = 0;
-  node* words_root;
 
   int category_1_3 = 0;
   int category_4_6 = 0;
   int category_7_10 = 0;
   int category_over_10 = 0;
 
-  words_root = create_node(NULL, NULL);
   word = malloc(sizeof(char) * word_alloc);
 
   while ((ch = fgetc(file)) != EOF) {
     if (is_word_boundary(ch)) {
       if (is_meaningful(word)) {
 	cur_words++;
-	insert(words_root, word);
+	insert(root, word);
 
 	if (is_sentence_boundary(ch)) {
 	  if (cur_words <= 3) {
@@ -68,9 +68,10 @@ void mainloop(FILE* file) {
 	  cur_words = 0;
 	}
       }
-
-      word = "";
-      cur_words++;
+      
+      word_pos = 0;
+      word[0] = '\0';
+      continue;
     }
 
     if (strlen(word)+2 > word_alloc) {
@@ -78,8 +79,9 @@ void mainloop(FILE* file) {
       word_alloc *= 2;
       word = realloc(word, word_alloc);
     }
-
-    word += ch;    
+    
+    word[word_pos++] = (char)ch;
+    word[word_pos] = '\0';
   }
 
   printResults(root, sentences, category_1_3, category_4_6, category_7_10, category_over_10);

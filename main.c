@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
         file = fopen(argv[1], "r");
     }
     if (file == NULL) {
-        puts("File could not be read");
+        puts("File could not be read\n");
         return (EXIT_FAILURE);
     }
 

@@ -52,50 +52,53 @@ node * create_node(node * parent, char * data) {
         free(new);
         return NULL;
     }
-    
+
     strcpy(new->data, data);
     new->height = 0;
     new->left = NULL;
     new->right = NULL;
     new->parent = parent;
+    new->count = 1;
 
     return new;
 }
 
 void insert(node * nod, char * data) {
-    node * current = nod;
-
-    if (nod == NULL && nod == root) {
-        root = create_node(NULL, data);
-        return;
+  node * current = nod;
+  
+  if (nod == NULL && nod == root) {
+    root = create_node(NULL, data);
+    return;
+  }
+  
+  while (1) {
+    if (strcmp(data, current->data) < 0) {
+      if (current->left != NULL) {
+	current = current->left;
+      } else {
+	current->left = create_node(current, data);
+	current = current->left;
+	break;
+      }
+    } else if (strcmp(data, current->data) > 0) {
+      if (current->right != NULL) {
+	current = current->right;
+      } else {
+	current->right = create_node(current, data);
+	current = current->right;
+	break;
+      }
+    } else { //arvo on jo puussa
+      current->count++;
+      break;
     }
-
-    while (strcmp(current->data, data) != 0) {
-        if (strcmp(data, current->data) < 0) {
-            if (current->left != NULL) {
-                current = current->left;
-            } else {
-                current->left = create_node(current, data);
-                current = current->left;
-            }
-        } else if (strcmp(data, current->data) > 0) {
-            if (current->right != NULL) {
-                current = current->right;
-            } else {
-                current->right = create_node(current, data);
-                current = current->right;
-            }
-        } else { //arvo on jo puussa
-            current->count++;
-            return;
-        }
-    }
-
-    do {
-        current = current->parent;
-        current->height = max(height(current->left), height(current->right)) + 1;
-        current = balance_tree(current);
-    } while (current->parent != NULL);
+  }
+  
+  do {
+    current->height = max(height(current->left), 
+			  height(current->right)) + 1;
+    current = balance_tree(current);
+  } while ((current = current->parent) != NULL);
 }
 
 node * balance_tree(node * nod) {
@@ -191,9 +194,9 @@ void print_inorder(node * nod) {
 
 void print_counts(node * nod) {
     if (nod != 0) {
-        print_inorder(nod->left);
+        print_counts(nod->left);
         printf("%s:\t\t%d\n", nod->data, nod->count);
-        print_inorder(nod->right);
+        print_counts(nod->right);
     }
 }
 
