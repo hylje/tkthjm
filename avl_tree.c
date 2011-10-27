@@ -24,14 +24,11 @@ int height(node * nod) {
     }
 }
 
-//TODO: fix this
-
 void delete_tree(node * nod) {
     if (nod != NULL) {
         delete_tree(nod->left);
         delete_tree(nod->right);
-        //printf("data: %s\n", ptr->data);
-        //free(nod->data);
+        free(nod->data);
         free(nod);
     }
     return;
@@ -111,7 +108,6 @@ node * balance_tree(node * nod) {
             rotate_left(nod->left);
             nod = rotate_right(nod);
         }
-        //} else if (height(nod->right) == (height(nod->left) + 2)) {
     } else {
         if (height(nod->right->right) > height(nod->right->left)) {
             nod = rotate_left(nod);
