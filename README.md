@@ -25,9 +25,15 @@ Use balanced binary trees as your data structure.
 PARTICIPANTS
 ============
 
-* Juuso Hyvönen 
 * Leo Honkanen 
-* Miika Sirén 
+* Juuso Hyvönen
+* Miika Sirén
+
+Division of labour
+------------------
+*Leo Honkanen: The actual word calculation funtion
+*Miika Sirén: AVL Tree
+*Juuso Hyvönen: Parsing parameters, small tool functions
 
 HELP
 ====
