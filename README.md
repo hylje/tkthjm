@@ -31,9 +31,11 @@ PARTICIPANTS
 
 Division of labour
 ------------------
+
 * Leo Honkanen: The actual word calculation funtion
-* Miika Sirén: AVL Tree
 * Juuso Hyvönen: Parsing parameters, small tool functions
+* Miika Sirén: AVL Tree
+
 
 HELP
 ====
@@ -54,4 +56,12 @@ Program structure
     Parses command line parameters.
     Calculates word counts.
     Outputs the counts.
+    
+How to use
+----------
+
+Name of the file to be processed is given either as a command line parameter or
+it is read from stdin.
+
+EXAMPLE './tkthjm coolfile.txt'
 
