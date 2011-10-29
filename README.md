@@ -67,3 +67,7 @@ it is read from stdin.
 
 EXAMPLE './tkthjm coolfile.txt'
 
+Use -h flag for help.
+
+EXAMPLE './tkthjm -h'
+
