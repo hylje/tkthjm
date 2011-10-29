@@ -1,5 +1,5 @@
-/** Tiedosto sis√§lt√§√§ toteutuksen avl-puun funktioille.
- * Tiedosto ei k√§yt√§ muiden tiedostojen funktioita.
+/** Tiedosto sis‰lt‰‰ toteutuksen avl-puun funktioille.
+ * Tiedosto ei k‰yt‰ muiden tiedostojen funktioita.
  */
 
 #include<stdio.h>
@@ -191,7 +191,7 @@ void print_inorder(node * nod) {
 void print_counts(node * nod) {
     if (nod != 0) {
         print_counts(nod->left);
-        printf("%s:\t\t%d\n", nod->data, nod->count);
+        printf("%d %s\n", nod->count, nod->data);
         print_counts(nod->right);
     }
 }

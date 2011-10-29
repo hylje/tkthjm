@@ -4,13 +4,13 @@
 #include "functions.h"
 
 /**
- * Tekij√§: Juuso Hyv√∂nen
- * Tarkoitus: Parsii komentoriviparametrit sek√§ kutsuu p√§√§ohjelmaa
- * Parametrit: Parametrien lukum√§√§r√§, parametritaulukko.
- * -h tulostaa k√§ytt√∂ohjeet. Muussa tapauksessa parametrin
+ * Tekij‰: Juuso Hyvˆnen
+ * Tarkoitus: Parsii komentoriviparametrit sek‰ kutsuu p‰‰ohjelmaa
+ * Parametrit: Parametrien lukum‰‰r‰, parametritaulukko.
+ * -h tulostaa k‰yttˆohjeet. Muussa tapauksessa parametrin
  * oletetaan olevan tiedostonimi
  * Palauttaa: exit-koodin
- * Muuttaa: Ei mit√§√§n-
+ * Muuttaa: Ei mit‰‰n-
  */
 int main(int argc, char** argv) {
     FILE* file = 0;
@@ -29,6 +29,6 @@ int main(int argc, char** argv) {
         return (EXIT_FAILURE);
     }
 
-    mainloop(file);
+    mainprogram(file);
     return (EXIT_SUCCESS);
 }

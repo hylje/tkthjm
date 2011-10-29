@@ -6,11 +6,11 @@
 #include "avl_tree.h"
 
 void printResults(node* tree, int total, int a, int b, int c, int d) {
-    printf("WORD\t\tCOUNT\n");
+    printf("COUNT WORD\n");
     print_counts(tree);
     printf("Number of sentences: %d\n", total);
-    printf("Length distribution:"
-            "1-3: %d  4-6: %d, 7-10: %d,  10+: %d\n", a, b, c, d);
+    printf("Length distribution: "
+            "| 1-3: %d | 4-6: %d | 7-10: %d | 10+: %d |\n", a, b, c, d);
 }
 
 /* Leo Honkanen */
@@ -29,7 +29,7 @@ bool is_word_boundary(char ch) {
 
 
 /* Leo Honkanen */
-void mainloop(FILE* file) {
+void mainprogram(FILE* file) {
   int ch;
   char* word;
   unsigned int word_pos = 0;
