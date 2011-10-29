@@ -32,7 +32,7 @@ PARTICIPANTS
 Division of labour
 ------------------
 
-* Leo Honkanen: The actual word calculation funtion
+* Leo Honkanen: The actual word calculation function
 * Juuso Hyvönen: Parsing parameters, small tool functions
 * Miika Sirén: AVL Tree
 
@@ -57,6 +57,8 @@ Program structure
     Calculates word counts.
     Outputs the counts.
     
+Functions are commented in .h files except main() which is commented in main.c.    
+
 How to use
 ----------
 
