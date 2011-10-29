@@ -6,6 +6,8 @@
 #ifndef AVL_TREE_H
 #define	AVL_TREE_H
 
+#include <stdio.h>
+
 /** Avl-puun alkion m‰‰rittely
  */
 typedef struct node {
@@ -117,7 +119,7 @@ void print_inorder(node * nod);
  * Palauttaa: Ei mit‰‰n.
  * Muuttaa: Ei mit‰‰n-
  */
-void print_counts(node * nod);
+void print_counts(FILE*, node * nod);
 
 /**
  * Tekij‰: Juuso Hyvˆnen

@@ -13,22 +13,38 @@
  * Muuttaa: Ei mitään-
  */
 int main(int argc, char** argv) {
-    FILE* file = 0;
-    if (argc > 1 && strcmp(argv[1], "-h") == 0) {
-        printHelp();
-        return (EXIT_SUCCESS);
+    FILE* infile = 0;
+    FILE* outfile = 0;
+
+    if (argc == 2 && strcmp(argv[1], "-h") == 0) {
+      printHelp();
+      return (EXIT_SUCCESS);
     }
 
     if (argc == 1) {
-        file = stdin;
-    } else {
-        file = fopen(argv[1], "r");
+        infile = stdin;
+	outfile = stdout;
+    } else if (argc == 2) {
+      infile = fopen(argv[1], "r");
+      outfile = stdout;
+    } else if (argc == 3) {
+      if (strcmp(argv[1], "-") == 0) {
+	infile = stdin;
+      } else {
+	infile = fopen(argv[1], "r");
+      }
+      outfile = fopen(argv[2], "w");
     }
-    if (file == NULL) {
-        puts("File could not be read\n");
-        return (EXIT_FAILURE);
+    
+    if (infile == NULL) {
+      puts("Input file could not be read\n");
+      return (EXIT_FAILURE);
+    }
+    if (outfile == NULL) {
+      puts("Input file could not be written to\n");
+      return (EXIT_FAILURE);
     }
 
-    mainprogram(file);
+    mainprogram(infile, outfile);
     return (EXIT_SUCCESS);
 }

@@ -188,12 +188,12 @@ void print_inorder(node * nod) {
     }
 }
 
-void print_counts(node * nod) {
-    if (nod != 0) {
-        print_counts(nod->left);
-        printf("%d %s\n", nod->count, nod->data);
-        print_counts(nod->right);
-    }
+void print_counts(FILE* outfile, node * nod) {
+  if (nod != 0) {
+    print_counts(outfile, nod->left);
+    fprintf(outfile, "%d %s\n", nod->count, nod->data);
+    print_counts(outfile, nod->right);
+  }
 }
 
 node* findNode(node* nod, char* word) {

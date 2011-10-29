@@ -5,12 +5,12 @@
 #include "functions.h"
 #include "avl_tree.h"
 
-void printResults(node* tree, int total, int a, int b, int c, int d) {
-    printf("COUNT WORD\n");
-    print_counts(tree);
-    printf("Number of sentences: %d\n", total);
-    printf("Length distribution: "
-            "| 1-3: %d | 4-6: %d | 7-10: %d | 10+: %d |\n", a, b, c, d);
+void printResults(FILE* outfile, node* tree, int total, int a, int b, int c, int d) {
+  fprintf(outfile, "COUNT WORD\n");
+  print_counts(outfile, tree);
+  fprintf(outfile, "Number of sentences: %d\n", total);
+  fprintf(outfile, "Length distribution: "
+	  "| 1-3: %d | 4-6: %d | 7-10: %d | 10+: %d |\n", a, b, c, d);
 }
 
 /* Leo Honkanen */
@@ -29,7 +29,7 @@ bool is_word_boundary(char ch) {
 
 
 /* Leo Honkanen */
-void mainprogram(FILE* file) {
+void mainprogram(FILE* infile, FILE* outfile) {
   int ch;
   char* word;
   unsigned int word_pos = 0;
@@ -44,7 +44,7 @@ void mainprogram(FILE* file) {
 
   word = malloc(sizeof(char) * word_alloc);
 
-  while ((ch = fgetc(file)) != EOF) {
+  while ((ch = fgetc(infile)) != EOF) {
     if (is_word_boundary(ch)) {
       if (is_meaningful(word)) {
 	cur_words++;
@@ -84,13 +84,20 @@ void mainprogram(FILE* file) {
     word[word_pos] = '\0';
   }
 
-  printResults(root, sentences, category_1_3, category_4_6, category_7_10, category_over_10);
+  printResults(outfile, root, sentences, category_1_3, category_4_6, category_7_10, category_over_10);
 }
 
 void printHelp() {
-    printf("Program prints the number of sentences and the distribution "
-            "how many words the sentences contain. The name of the output "
-            "file is given either as a command line parameter or it is read "
-            "from stdin.\n EXAMPLE './program coolfile.txt'\n");
+    printf("This program prints the number of sentences and the distribution "
+	   "how many words the sentences contain. The name of the input "
+	   "file is given either as the first command line parameter "
+	   "or assumed to be stdin. The name of the output file is either "
+	   "given as the second command line parameter or assumed to be "
+	   "stdout. Use '-' as explicit stdin when outputting to a file.\n\n"
+	   "EXAMPLES\n"
+	   "./tkthjm\n"
+	   "./tkthjm coolfile.txt\n"
+	   "./tkthjm coolfile.txt coolresult.txt\n"
+	   "./tkthjm - coolresult.txt\n");
 }
 

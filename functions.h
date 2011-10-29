@@ -1,3 +1,6 @@
+#ifndef FUNCTIONS_H
+#define	FUNCTIONS_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,7 +13,7 @@
  * Palauttaa: Ei mit‰‰n.
  * Muuttaa: Ei mit‰‰n.
  */
-void printResults(node*, int, int, int, int, int);
+void printResults(FILE*, node*, int, int, int, int, int);
 
 /**
  * Tekij‰: Juuso Hyvˆnen
@@ -28,4 +31,6 @@ void printHelp();
  * Palauttaa: Ei mit‰‰n.
  * Muuttaa: Ei mit‰‰n.
  */
-void mainprogram(FILE*);
+void mainprogram(FILE*, FILE*);
+ 
+#endif
