@@ -34,17 +34,17 @@ HELP
 Program structure
 -----------------
 
-*avl_test.c
+### avl_test.c
     Tests the Tree functions
-*avl_tree.c
+### avl_tree.c
     AVL Tree structure used for storing word counts
-*avl_tree.h
+### avl_tree.h
     Headers for avl_tree.c
-*functions.c
+### functions.c
     Implementations of all the functions except AVL tree
-*functions.h
+### functions.h
     Headers for functions.c
-*main.c
+### main.c
     Parses command line parameters.
     Calculates word counts.
     Outputs the counts.
