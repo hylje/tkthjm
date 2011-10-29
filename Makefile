@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS = -std=c99 -Wextra -Werror -pedantic -Wall -g -O1
 
 build: main.o functions.o avl_tree.o # new object names here
-	$(CC) $(CFLAGS) main.o functions.o avl_tree.o -o tktjhm
+	$(CC) $(CFLAGS) main.o functions.o avl_tree.o -o tkthjm
 avl_test: avl_test.o avl_tree.o
 	$(CC) $(CFLAGS) avl_test.o avl_tree.o -o avl_test
 main.o: main.c

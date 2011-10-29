@@ -67,6 +67,16 @@ it is read from stdin.
 
 EXAMPLE './tkthjm coolfile.txt'
 
+Output file is assumed to be stdout. It can also be specified as the
+second command line parameter. 
+
+EXAMPLE './tkthjm coolfile.txt coolout.txt'
+
+If it is desired to output stdin input to a file, use explicit '-' to
+signify stdin as the first argument.
+
+EXAMPLE './tkthjm - coolout.txt'
+
 Use -h flag for help.
 
 EXAMPLE './tkthjm -h'
